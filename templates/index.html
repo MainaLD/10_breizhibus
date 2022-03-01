@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block titre %} Lignes {% endblock %}
+
+{% block milieu %}
+<h2>Consulter les lignes</h2>
+
+<form action="{{url_for('afficher_arrets')}}" method='POST'>
+    <div id="ma_page">
+
+        <div id="container">
+
+            <div class="bloc">
+                <label for="lignes">Sélectionner la ligne</label>
+                <select name="ligne_saisi" id="lignes">
+                    {% for ligne in list_lignes %}
+                    <option value="{{ ligne['nom'] }}">{{ ligne['nom'] }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <div id="button_send">
+                <button type="submit">Valider</button>
+            </div>
+        </div>
+</form>
+
+{% endblock %}
+
+
+
+<!-- 
+{% for ligne in list_lignes %}
+<li>{{ ligne }}</li>
+{% endfor %} 
+<li>{{ donateur["nom"] }} {{ donateur["prenom"] }} {{ donateur["sang"] }} {{ donateur["mail"] }}
+                    </li>
+                    <option value="paca">Provence-Alpes-Côte d'Azur</option>
+
+-->

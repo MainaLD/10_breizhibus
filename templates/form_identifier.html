@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titre %} Identification {% endblock %}
+
+{% block milieu %}
+
+<h2>Se connecter a mon espace</h2>
+
+<form action="{{url_for('autoriser')}}" method='post'>
+
+    <div id="container">
+
+        <div class="bloc">
+            <label for="identifiant">Identifiant* :</label>
+            <input type="text" id="identifiant" name="user_identifiant" required>
+        </div>
+
+        <div class="bloc">
+            <label for="mdp">Mot de passe* :</label>
+            <input type="text" id="mdp" name="user_mdp" required>
+        </div>
+
+        <div id="button_send">
+            <button type="submit">Valider</button>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block titre %}
+Bienvenue
+{% endblock %}
+
+{% block milieu %}
+
+{% if reponse %}
+
+<h2>Bienvenue {{qui}}</h2>
+<a href="{{url_for('ajouter_bus')}}"> Ajouter un bus</a>
+<a href="{{url_for('modifier_bus')}}"> Modifier un bus</a>
+
+{% else %}
+
+<h2>Erreur</h2>
+<p>Vous n'avez pas les droits {{qui}}</p>
+
+{% endif %}
+
+
+{% endblock %}

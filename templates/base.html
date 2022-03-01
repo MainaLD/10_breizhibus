@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titre %} {% endblock %} </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_bus.css')}}">
+
+    <!-- <link rel="stylesheet" href=""> -->
+
+    <style>
+        @font-face {
+            font-family: Roboto-Light;
+            src: url(./static/Roboto-Light.ttf);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page_global">
+        <!-- Haut de page -->
+        <div id="header">
+            <h1>BREIZHIBUS</h1>
+            <div id="menu">
+                <!-- <img src="" alt="logo" id="logo"> -->
+                <div id="lignes"> <a href="{{ url_for('afficher_lignes') }}"> Lignes de bus </a> </div>
+                <div id="connexion"> <a href="{{ url_for('identifier') }}"> Connexion </a></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Milieu de page -->
+    <div id="milieu">
+        {% block milieu %} {% endblock %}
+
+    </div>
+
+    <!-- Bas de page -->
+    <footer>
+        <p>Nous contacter : breizhibus@bus.bzh</p>
+    </footer>
+
+
+
+</body>
+
+</html>

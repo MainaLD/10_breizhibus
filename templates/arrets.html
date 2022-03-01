@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block titre %}
+Arrêts
+{% endblock %}
+
+{% block milieu %}
+<h2>Liste des arrets par ligne</h2>
+
+<table>
+    <th>Ligne</th>
+    <th>Arrêt</th>
+    <th>Adresse</th>
+    {% for arret in afficher_arrets %}
+    <tr>
+        <td>{{ arret[0] }}</td>
+        <td>{{ arret[1] }}</td>
+        <td>{{ arret[2] }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
