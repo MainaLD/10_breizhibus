@@ -26,7 +26,7 @@ def afficher_arrets():
 def identifier():
     return render_template("form_identifier.html")
 
-
+# ["POST", "GET"] => pour revenir sur la page sans repasser par le mdp
 @app.route("/autorisation", methods=["POST"])
 def autoriser():
     identifiant = request.values.get("user_identifiant")
