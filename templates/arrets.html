@@ -13,9 +13,9 @@ Arrêts
     <th>Adresse</th>
     {% for arret in afficher_arrets %}
     <tr>
-        <td>{{ arret[0] }}</td>
-        <td>{{ arret[1] }}</td>
-        <td>{{ arret[2] }}</td>
+        <td>{{ arret.nom_ligne }}</td>
+        <td>{{ arret.nom_arrets }}</td>
+        <td>{{ arret.adresse }}</td>
     </tr>
     {% endfor %}
 

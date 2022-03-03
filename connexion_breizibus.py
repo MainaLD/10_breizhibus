@@ -1,6 +1,8 @@
 from types import ClassMethodDescriptorType
 import mysql.connector as msql
-
+from ligne import Ligne
+from bus import Bus
+from arret_ligne import Arret_ligne
 
 class Connexion:
     # Variables de classe
@@ -48,11 +50,7 @@ class Connexion:
 
         liste_lignes = []
         for enregistrement in cls.__cursor:
-            ligne = {}
-            ligne["id"] = enregistrement[0]
-            ligne["nom"] = enregistrement[1]
-
-            liste_lignes.append(ligne)
+            liste_lignes.append(Ligne(enregistrement[0],enregistrement[1]))
 
         cls.close_connexion()
 
@@ -65,7 +63,10 @@ class Connexion:
         # Vérifier la requête
         query = f"SELECT lignes.nom, arrets.nom, arrets.adresse FROM lignes JOIN arrets_lignes ON lignes.id_ligne = arrets_lignes.id_ligne JOIN arrets ON arrets_lignes.id_arret = arrets.id_arret WHERE lignes.nom = '{ligne_nom}'"
         cls.__cursor.execute(query)
-        arret = cls.__cursor.fetchall()
+        arret = []
+        for arret_lu in cls.__cursor:
+            arret.append(Arret_ligne(arret_lu[0], arret_lu[1], arret_lu[2]))
+        
         cls.close_connexion()
         return arret
 
@@ -84,6 +85,20 @@ class Connexion:
         cls.close_connexion()
 
         return ok
+
+    @classmethod
+    def get_bus(cls):
+        cls.open_connexion()
+        # Vérifier la requête
+        query = "SELECT id_bus, numero, immatriculation, nombre_place, bus.id_ligne, lignes.nom FROM bus JOIN lignes ON lignes.id_ligne = bus.id_ligne;"
+        cls.__cursor.execute(query)
+
+        list_bus = []
+        for bus in cls.__cursor:
+            list_bus.append(Bus(bus[0], bus[1], bus[2], bus[3], bus[4], bus[5]))
+        
+        cls.close_connexion()
+        return list_bus    
 
     @classmethod
     def add_bus(cls, num_saisi, immatriculation_saisi, nb_place_saisi, ligne_saisi):

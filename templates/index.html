@@ -13,7 +13,7 @@
             <label for="lignes">Sélectionner la ligne</label>
             <select name="ligne_saisi" id="lignes">
                 {% for ligne in list_lignes %}
-                <option value="{{ ligne['nom'] }}">{{ ligne['nom'] }}</option>
+                <option value="{{ ligne.nom_ligne }}">{{ ligne.nom_ligne }}</option>
                 {% endfor %}
 
             </select>
