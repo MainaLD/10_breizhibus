@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titre %} Gestion des bus {% endblock %}
+
+{% block milieu %}
+<h2>Gestion des bus</h2>
+<form action="{{url_for('suppression')}}" method='POST'>
+
+    <div id="container">
+
+        <h3>Supprimer un bus</h3>
+        <div class="bloc">
+            <label for="id_bus">Bus à supprimer</label>
+            <select name="id_bus_saisi" id="id_bus">
+                {% for element in list_id_bus %}
+                <option value="{{ element }}">{{ element }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+        <div id="button_send">
+            <button type="submit">Valider</button>
+        </div>
+
+    </div>
+</form>
+
+
+{% endblock %}

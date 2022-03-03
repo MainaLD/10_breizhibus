@@ -96,6 +96,23 @@ class Connexion:
         pass
 
     @classmethod
+    def get_bus(cls):
+        """Méthode pour récupérer toutes les lignes"""
+
+        cls.open_connexion()
+        query = "SELECT id_bus FROM bus ORDER BY id_bus ASC"
+        cls.__cursor.execute(query)
+        # bus = cls.__cursor.fetchall()
+
+        liste_bus = []
+        for enregistrement in cls.__cursor:
+            liste_bus.append(enregistrement[0])
+
+        cls.close_connexion()
+
+        return liste_bus
+
+    @classmethod
     def update_bus(
         cls,
         id_bus_a_modifier,
@@ -113,7 +130,8 @@ class Connexion:
         cls.close_connexion()
         pass
 
-    def delete_bus(cls, id_bus):
+    @classmethod
+    def delete_bus(cls, id_bus: int):
         """Méthode pour supprimer un bus dans la table bus à partir de son id"""
         cls.open_connexion()
         query = f"DELETE FROM bus WHERE id_bus = {id_bus}"

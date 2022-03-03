@@ -36,7 +36,7 @@ def autoriser():
 
 @app.route("/autorisation/ajouter")
 def ajouter_bus():
-    return render_template("form_bus.html")
+    return render_template("form_bus_add.html")
 
 
 @app.route("/autorisation/ajout", methods=["POST"])
@@ -51,16 +51,32 @@ def ajout():
 
 @app.route("/autorisation/modifier")
 def modifier_bus():
-    return render_template("form_bus.html")
+    liste_bus = Connexion.get_bus()
+    return render_template("form_bus_update.html", list_id_bus=liste_bus)
 
 
-# @app.route("/autorisation/modification", methods=["GET"])
-# def modification():
-#     numero = request.values.get("bus_num")
-#     immatriculation = request.values.get("bus_immatriculation")
-#     nb_place = request.values.get("bus_nb_place")
-#     id_ligne = request.values.get("id_ligne")
-#     return render_template("ajout.html")
+@app.route("/autorisation/modification", methods=["POST"])
+def modification():
+    id_bus = request.values.get("id_bus_saisi")
+    numero = request.values.get("bus_num")
+    immatriculation = request.values.get("bus_immatriculation")
+    nb_place = request.values.get("bus_nb_place")
+    id_ligne = request.values.get("id_ligne")
+    Connexion.update_bus(id_bus, numero, immatriculation, nb_place, id_ligne)
+    return render_template("modification.html", num=numero)
+
+
+@app.route("/autorisation/supprimer")
+def supprimer_bus():
+    liste_bus = Connexion.get_bus()
+    return render_template("form_bus_delete.html", list_id_bus=liste_bus)
+
+
+@app.route("/autorisation/suppression", methods=["POST"])
+def suppression():
+    id_bus = request.values.get("id_bus_saisi")
+    Connexion.delete_bus(id_bus)
+    return render_template("suppression.html", id_bus=id_bus)
 
 
 if __name__ == "__main__":

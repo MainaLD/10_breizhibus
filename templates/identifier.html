@@ -10,8 +10,10 @@ Bienvenue
 {% if reponse %}
 
 <h2>Bienvenue {{qui}}</h2>
-<a href="{{url_for('ajouter_bus')}}"> Ajouter un bus</a>
-<a href="{{url_for('modifier_bus')}}"> Modifier un bus</a>
+<li><a href="{{url_for('ajouter_bus')}}"> Ajouter un bus</a></li>
+<li><a href="{{url_for('modifier_bus')}}"> Modifier un bus</a></li>
+<li><a href="{{url_for('supprimer_bus')}}"> Supprimer un bus</a></li>
+
 
 {% else %}
 

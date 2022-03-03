@@ -40,6 +40,15 @@ h2
     
 }
 
+h3
+{
+    font-family: Bebas;
+    font-size: 1.2em;
+    border-bottom: black solid 1px;
+    margin-bottom: 20px;
+
+}
+
 #menu
 {
     height: 10%;
@@ -85,7 +94,7 @@ h2
     opacity: 0.9;
 }
 
-input[type=text], select
+input[type=text],input[type=password], select
 {
     border: 1px solid darkgray;
     border-radius: 3px;

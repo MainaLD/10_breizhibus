@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block titre %} Gestion des bus {% endblock %}
+
+{% block milieu %}
+<h2>Gestion des bus</h2>
+<form action="{{url_for('ajout')}}" method='POST'>
+
+    <div id="container">
+        <h3>Ajouter un bus</h3>
+        <div class="bloc">
+            <label for="num">Numéro de bus :</label>
+            <input type="text" id="num" name="bus_num" required>
+        </div>
+
+        <div class="bloc">
+            <label for="immatriculation">Immatriculation :</label>
+            <input type="text" id="immatriculation" name="bus_immatriculation" required>
+        </div>
+
+        <div class="bloc">
+            <label for="nb_place">Nombre de place :</label>
+            <input type="text" id="nb_place" name="bus_nb_place" required>
+        </div>
+
+        <div class="bloc">
+            <label for="id_ligne">Id Ligne :</label>
+            <input type="text" id="id_ligne" name="id_ligne" required>
+        </div>
+
+        <div id="button_send">
+            <button type="submit">Valider</button>
+        </div>
+
+
+    </div>
+</form>
+
+
+{% endblock %}
