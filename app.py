@@ -17,8 +17,9 @@ def afficher_arrets():
     ligne_nom = request.values.get("ligne_saisi")
     print(ligne_nom)
     list_arrets = Connexion.get_stops(ligne_nom)
+    list_bus = Connexion.get_bus(ligne_nom)
     print(list_arrets)
-    return render_template("arrets.html", afficher_arrets=list_arrets)
+    return render_template("arrets.html", afficher_arrets=list_arrets, a)
 
 
 @app.route("/identification")

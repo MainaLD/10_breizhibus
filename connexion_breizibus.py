@@ -87,7 +87,7 @@ class Connexion:
         return ok
 
     @classmethod
-    def get_bus(cls):
+    def lister_bus(cls):
         cls.open_connexion()
         # Vérifier la requête
         query = "SELECT id_bus, numero, immatriculation, nombre_place, bus.id_ligne, lignes.nom FROM bus JOIN lignes ON lignes.id_ligne = bus.id_ligne;"
@@ -99,6 +99,8 @@ class Connexion:
         
         cls.close_connexion()
         return list_bus    
+
+
 
     @classmethod
     def add_bus(cls, num_saisi, immatriculation_saisi, nb_place_saisi, ligne_saisi):
@@ -126,7 +128,7 @@ class Connexion:
         cls.close_connexion()
 
         return liste_bus
-
+    
     @classmethod
     def update_bus(
         cls,
