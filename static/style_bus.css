@@ -117,11 +117,7 @@ label
     padding: 5px;
 }
 
-#button_send
-{
-    display: flex;
-    justify-content: center;
-}
+
 
 button
 {
@@ -135,7 +131,21 @@ button
     width: 100px;
     justify-content: center;
     margin: 5px;
+
 }
+
+button>a
+{
+    text-decoration: none;
+    color: black;
+}
+
+#button_send, #button_retour
+{
+    display: flex;
+    justify-content: center;
+}
+
 
 table 
 {
@@ -152,4 +162,24 @@ td, th
 tr:nth-child(even) 
 {
     background-color: #dddddd;
+}
+
+footer
+{
+    padding : 25px;
+    text-align: center;
+
+}
+
+li
+{
+    padding-left: 10px;
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
+
+li>a
+{
+    text-decoration: none;
+    color:  black;
 }
