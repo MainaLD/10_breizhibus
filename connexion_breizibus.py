@@ -86,6 +86,8 @@ class Connexion:
 
         return ok
 
+     
+
     @classmethod
     def lister_bus(cls):
         cls.open_connexion()
@@ -99,8 +101,20 @@ class Connexion:
         
         cls.close_connexion()
         return list_bus    
+    
+    @classmethod
+    def nommer_bus(cls, ligne_nom):
+        cls.open_connexion()
+        # Vérifier la requête
+        query = f"SELECT id_bus, numero, immatriculation, nombre_place, bus.id_ligne, lignes.nom FROM bus JOIN lignes ON lignes.id_ligne = bus.id_ligne WHERE lignes.nom = '{ligne_nom}';"
+        cls.__cursor.execute(query)
 
-
+        noms_bus = []
+        for bus in cls.__cursor:
+            noms_bus.append(Bus(bus[0], bus[1], bus[2], bus[3], bus[4], bus[5]))
+        
+        cls.close_connexion()
+        return noms_bus 
 
     @classmethod
     def add_bus(cls, num_saisi, immatriculation_saisi, nb_place_saisi, ligne_saisi):

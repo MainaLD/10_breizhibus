@@ -16,12 +16,21 @@ Arrêts
         <td>{{ arret.nom_ligne }}</td>
         <td>{{ arret.nom_arrets }}</td>
         <td>{{ arret.adresse }}</td>
+      
     </tr>
-
     
     {% endfor %}
-
+    
 </table>
+<div>
+    <h3>Liste des bus desservant la ligne : </h3>
+    {% for bus in afficher_bus %}
+        <li>{{ bus.numero }}</li>    
+    {% endfor %}
+</div>
+
+
+
 <div id="button_retour">
     <button><a href="{{url_for('afficher_lignes')}}">Retour</a></button>
 </div>
