@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from connexion_breizibus import Connexion
+from utils.connexion_breizhibus import Connexion
 
 
 app = Flask(__name__)

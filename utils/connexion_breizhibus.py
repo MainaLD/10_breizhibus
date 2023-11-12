@@ -1,8 +1,8 @@
 from types import ClassMethodDescriptorType
 import mysql.connector as msql
-from ligne import Ligne
-from bus import Bus
-from arret_ligne import Arret_ligne
+from .ligne import Ligne
+from .bus import Bus
+from .arret_ligne import Arret_ligne
 
 class Connexion:
     # Variables de classe
@@ -11,7 +11,7 @@ class Connexion:
     __PWD = "breizhibus"
     __HOST = "localhost"
     __PORT = "8081"
-    __DB = "breizhibus"
+    __DB = "projet_breizhibus"
     __cursor = None
 
     # Méthodes de classe

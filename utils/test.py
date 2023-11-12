@@ -1,4 +1,4 @@
-from connexion_breizibus import Connexion
+from .connexion_breizhibus import Connexion
 
 
 lignes = Connexion.get_lines()
